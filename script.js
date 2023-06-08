@@ -34,19 +34,10 @@ const lookup = {
 function rot13(encodedStr) {
   let decodedArr = []; // Your Result goes here
   // Only change code below this line
-	for(let i=0; i<encodedStr.length;i++){
-		let char = encodedStr[i];
-		let charCode = char.charCodeAt(0);
-
-		if (charCode >= 65 && charCode <= 90) {
-      // Check if the character is an uppercase letter
-      let decodedCharCode = ((charCode - 65 + 13) % 26) + 65;
-      let decodedChar = String.fromCharCode(decodedCharCode);
-      decodedArr.push(decodedChar);
-    } else {
-      // Non-alphabetic character, pass it on
-      decodedArr.push(char);
-    }
+	for (let i = 0; i < encodedStr.length; i++) {
+	let char = encodedStr[i];
+    let decodedChar = lookup[char] || char;
+    decodedArr.push(decodedChar);
   }
 
   return decodedArr.join("");
